@@ -1,0 +1,247 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  scrollbar-width: none;
+}
+
+img, svg {
+  user-select: none;
+}
+
+html, body {
+  height: 100svh;
+  width: 100vw;
+  overflow: scroll;
+  background-color: rgb(177, 48, 0);
+}
+
+#todoSec {
+  height: 100%;
+  width: 100%;
+}
+#todoSec .mainHeader {
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#todoSec .mainHeader:hover .serach {
+  visibility: visible;
+}
+#todoSec .mainHeader h2 {
+  cursor: default;
+  font-size: clamp(65px, 8vw, 100px);
+  color: white;
+}
+#todoSec .mainHeader h2:focus {
+  outline: none;
+}
+#todoSec .mainHeader .serach {
+  cursor: pointer;
+  margin-left: 20px;
+  transition: transform 0.2s;
+  visibility: hidden;
+}
+#todoSec .mainHeader .serach:hover {
+  transform: scale(1.2);
+}
+
+#todo-contaner {
+  height: 80vh;
+}
+#todo-contaner .todo-box {
+  height: 70%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  overflow-x: hidden;
+}
+#todo-contaner .todo-box .box {
+  position: relative;
+  width: 70%;
+  position: relative;
+  height: fit-content;
+  background-color: rgb(255, 202, 182);
+  padding: 5px 10px;
+  margin: auto;
+  color: rgb(228, 117, 76);
+  transition: padding 0.3s;
+  cursor: default;
+  margin-bottom: 10px;
+}
+#todo-contaner .todo-box .box .forHover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+#todo-contaner .todo-box .box .forHover:hover .forClivk {
+  transform: translate(30%, -30%);
+}
+#todo-contaner .todo-box .box .forHover .forClivk {
+  transform: translate(100%, -100%);
+  background-image: url("media/edit.svg");
+  background-repeat: no-repeat;
+  background-size: 40%;
+  background-position: 45% 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+#todo-contaner .todo-box .box[data-link=link] {
+  cursor: pointer;
+  border-width: 5px;
+  border-style: solid;
+  border-width: 3px;
+  border-image: linear-gradient(45deg, #009179, rgb(131, 68, 27), #009179) 1; /* gradient with required colors */
+}
+#todo-contaner .todo-box .box:hover {
+  padding: 20px 15px;
+  background-color: rgb(137, 37, 0);
+}
+#todo-contaner .todo-box .box:hover .title {
+  padding: 0px 15px;
+  color: rgb(255, 202, 182);
+}
+#todo-contaner .todo-box .box .title {
+  font-size: clamp(20px, 5vw, 40px);
+  color: inherit;
+  word-break: break-all;
+  line-break: anywhere;
+  transition: padding 0.2s;
+  color: rgb(137, 37, 0);
+}
+#todo-contaner .todo-box .box .title:focus {
+  outline: none;
+}
+#todo-contaner .todo-box .box .link {
+  display: none;
+  width: 100%;
+  border: none;
+  padding: 5px;
+}
+#todo-contaner .todo-box .box .link:focus {
+  outline: none;
+}
+#todo-contaner .todo-box .box .icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 80%;
+  transform: translateX(100%);
+}
+#todo-contaner .todo-box .box .icon svg {
+  height: 100%;
+  cursor: pointer;
+}
+#todo-contaner .todo-box .box .delet {
+  display: none;
+}
+#todo-contaner .todo-box .box .edite {
+  display: none;
+}
+
+#todo-contaner .todo-input {
+  height: 30%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+#todo-contaner .todo-input .box {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+#todo-contaner .todo-input .box .close-open {
+  height: 65%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.5s;
+  background-image: url("media/add.svg");
+  background-position: center;
+  background-size: 80%;
+  border-radius: 100px;
+  background-color: rgb(228, 117, 76);
+  margin: 10px;
+}
+#todo-contaner .todo-input .box .mainInputs {
+  height: 75%;
+  position: relative;
+  transition: padding-right 0.4s;
+}
+#todo-contaner .todo-input .box .mainInputs .inputfild {
+  position: absolute;
+  right: 0;
+  display: flex;
+  gap: 5px;
+  width: 100%;
+  height: 100%;
+}
+#todo-contaner .todo-input .box .mainInputs .inputfild .inputs {
+  height: 100%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#todo-contaner .todo-input .box .mainInputs .inputfild .inputs input {
+  height: calc(50% - 3px);
+  border-radius: 3px 0px 0px 3px;
+  border: 0;
+  padding: 10px;
+  color: black;
+  font-size: clamp(10px, 1vw, 20px);
+  font-weight: 600;
+}
+#todo-contaner .todo-input .box .mainInputs .inputfild .inputs input:focus {
+  outline: none;
+}
+#todo-contaner .todo-input .box .mainInputs .inputfild .addBtn {
+  height: 100%;
+  width: 30%;
+  display: grid;
+  place-items: center;
+  border-radius: 0px 5px 5px 0px;
+  background-color: rgb(228, 117, 76);
+  color: rgb(228, 117, 76);
+  font-weight: 900;
+  cursor: pointer;
+}
+#todo-contaner .todo-input .box .mainInputs .inputfild .addBtn svg {
+  user-select: none;
+  width: 60%;
+  height: 100%;
+}
+#todo-contaner .todo-input .box .mainInputs .inputfild .addBtn:hover {
+  background-color: rgb(137, 37, 0);
+  color: rgb(177, 48, 0);
+}
+
+@media only screen and (min-width: 600px) {
+  .box {
+    height: 50%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .box {
+    height: 50%;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

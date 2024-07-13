@@ -1,0 +1,293 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    scrollbar-width: none;
+}
+img , svg{
+    user-select: none;
+}
+
+$color1:rgb(255,202,182,1);
+$color2:rgb(228,117,76,1);
+$color3:rgb(177,48,0,1);
+$color4:rgb(137,37,0,1);
+html,body {
+
+        height: 100svh;width: 100vw;
+        overflow: scroll;
+        // background-image: linear-gradient($color1,$color3);
+        background-color: $color3;
+}
+
+
+#todoSec{
+
+    height: 100%;
+    width: 100%;
+    .mainHeader{
+        height: 20vh;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        &:hover .serach{
+            visibility: visible;
+        }
+        h2{
+
+            cursor: default;
+            font-size: clamp(65px,8vw,100px);
+            color: white;
+            &:focus{
+                outline: none;
+            }
+        }
+
+        .serach{
+            cursor: pointer;
+            margin-left: 20px;
+            transition: transform .2s;
+            visibility:hidden;
+            
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+    }
+}
+
+#todo-contaner{
+    height: 80vh;
+    .todo-box{
+        height: 70%;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+        scrollbar-width:thin;
+        overflow-x: hidden;
+        .box{
+
+            position: relative;
+            width: 70%;
+            position: relative;
+            height: fit-content;
+            background-color:$color1;
+            padding: 5px 10px;
+            margin: auto;
+            color: $color2;
+            transition:padding .3s ;
+            cursor: default;
+            margin-bottom: 10px;
+            .forHover{
+                position: absolute;
+                top: 0;right: 0;
+                height: 100%;
+                aspect-ratio: 1;
+                overflow: hidden;
+                &:hover .forClivk{
+                    transform: translate(30%,-30%);
+                }
+                .forClivk{
+                    transform: translate(100%,-100%);
+                    background-image: url("media/edit.svg");
+                    background-repeat: no-repeat;
+                    background-size: 40%;
+                    background-position:45% 100%;
+                    position: absolute;
+                    top: 0;
+                    right:0;
+                    height: 100%;
+                    aspect-ratio: 1;
+                    border-radius:50%;
+                    transition: transform .3s;
+                    cursor: pointer;
+                }
+
+            }
+            &[data-link="link"]{
+                cursor: pointer;
+                border-width: 5px;
+                border-style: solid;
+                border-width: 3px;
+                border-image: linear-gradient(45deg, #009179,rgb(131, 68, 27),#009179) 1; /* gradient with required colors */         
+            }
+            &:hover{
+                padding:20px 15px;
+                background-color: $color4;
+            }
+            &:hover .title{
+                padding:0px 15px;
+                color: $color1;
+            }  
+            .title{
+                font-size:clamp(20px,5vw,40px);
+                color: inherit;
+                word-break: break-all;
+                line-break: anywhere;
+                transition:padding .2s ;
+                color: $color4;
+                &:focus{
+                    outline: none;
+                }
+            }
+            .link{
+                display: none;
+                width: 100%;
+                border: none;
+                padding: 5px;
+                
+                &:focus{
+                    outline: none;
+                }
+            }
+            .icon{
+                position: absolute;
+                right: 0;
+                top: 0;bottom: 0;
+                margin: auto;
+                height: 80%;
+                
+                transform: translateX(100%);
+                svg{
+                    height: 100%;
+                    cursor: pointer;
+                }
+            }
+            .delet{
+                display: none;
+            }
+            .edite{
+                display: none;
+            }
+        }
+
+
+    }
+}
+
+#todo-contaner{
+    .todo-input{
+        height: 30%;
+        // dont play with it
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        .box{
+            // height: 50%;
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            .close-open{
+                height:65%;
+                aspect-ratio: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                transition:transform .5s;
+                background-image: url("media/add.svg");
+                background-position: center;
+                background-size: 80%;
+                border-radius: 100px;
+                background-color:rgb(228,117,76,1);
+                margin: 10px;
+            }
+
+            .mainInputs{
+                height: 75%;
+                position: relative;
+                transition: padding-right .4s;
+                .inputfild{
+                    position: absolute;
+                    right: 0;
+
+                    display: flex;
+                    gap: 5px;
+                    width:100%;
+                    height: 100%;
+
+                    .inputs{
+                        height: 100%;
+                        width: 70%;
+                        display: flex;
+                
+                        flex-direction: column;
+                        justify-content: space-between;
+                        input{
+                            height: calc(50% - 3px);
+                            border-radius: 3px 0px 0px 3px;
+                            border: 0;
+                            padding: 10px;
+                            color: black;
+                            font-size:clamp(10px,1vw,20px);
+                            font-weight: 600;
+                            &:focus{
+                                outline: none;
+                            }
+                        }
+                    }
+                    .addBtn{
+                        height: 100%;
+                        width: 30%;
+                        display: grid;
+                        place-items: center;
+                        border-radius: 0px 5px 5px 0px;
+                        background-color: $color2;
+                        color: $color2;
+                        font-weight: 900;
+                        cursor: pointer;
+                     
+                        svg{
+                            user-select: none;
+                            width: 60%;
+                            height: 100%;
+                        }
+                        &:hover{
+                            background-color: $color4;
+                            color: $color3;
+                        }
+                        
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+@media only screen and (min-width: 600px) {
+    .box{
+        height: 50%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .box{
+        height: 50%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
